@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#18324a">
+  <title>Kudisa — Our Life Together</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="loginGate" class="login-gate">
+  <div class="login-card">
+    <div class="logo login-logo">TK</div>
+    <span class="eyebrow">KUDISA · PRIVATE COUPLE SPACE</span>
+    <h1>Welcome to Kudisa</h1>
+    <p>Choose your profile and enter your private access code.</p>
+    <div class="profile-choice">
+      <button type="button" class="profile-option" data-login-profile="tadisa">
+        <strong>Tadisa</strong><span>Code 224</span>
+      </button>
+      <button type="button" class="profile-option" data-login-profile="kuda">
+        <strong>Kuda</strong><span>Code BME</span>
+      </button>
+    </div>
+    <form id="loginForm" class="form-card">
+      <label>Access code
+        <input id="loginCode" type="password" autocomplete="off" placeholder="Enter 224 or BME" required>
+      </label>
+      <button class="primary" type="submit">Enter Kudisa</button>
+      <p id="loginError" class="small error-text"></p>
+    </form>
+    <p class="small">Prototype login is local to this GitHub build. Production should replace it with secure backend authentication.</p>
+  </div>
+</div>
+
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">TK</div>
+      <div><span class="eyebrow">KUDISA · 224 · BME</span><h1>Our Life Together</h1></div>
+    </div>
+    <div class="top-actions"><span id="currentProfileBadge" class="profile-badge">Not signed in</span><button class="icon-btn" id="logoutBtn" type="button" title="Switch profile">↪</button><button class="icon-btn" id="themeBtn" type="button">◐</button></div>
+  </header>
+
+  <main>
+    <section class="hero card">
+      <div>
+        <span class="pill">TK · KUDISA</span>
+        <h2>Today.<br><em>Tomorrow. Forever.</em></h2>
+        <p>One private place for communication, love, memories, dates, money, routines and the life you are building together.</p>
+        <div class="hero-stats">
+          <div><strong id="daysTogether">—</strong><small>days together</small></div>
+          <div><strong>7 JUL</strong><small>anniversary</small></div>
+          <div><strong>100</strong><small>wedding guest limit</small></div>
+        </div>
+      </div>
+      <button class="primary" onclick="showSection('life')">Open Our Life</button>
+    </section>
+
+    <nav class="tabs">
+      <button class="tab active" data-target="home">Home</button>
+      <button class="tab" data-target="chat">Chat</button>
+      <button class="tab" data-target="music">Music</button>
+      <button class="tab" data-target="life">Our Life</button>
+      <button class="tab" data-target="date">Plan a Date</button>
+      <button class="tab" data-target="money">Life We Want</button>
+      <button class="tab" data-target="memories">Memories</button>
+      <button class="tab" data-target="calendar">Calendar</button>
+      <button class="tab" data-target="school">School Timetable</button>
+      <button class="tab" data-target="tasks">Tasks</button>
+      <button class="tab" data-target="profile">Us</button>
+    </nav>
+
+    <section id="home" class="section active-section">
+      <div class="section-heading"><div><span class="eyebrow">TODAY</span><h2>Our day</h2></div><span class="status">Together</span></div>
+      <div class="dashboard-grid">
+        <article class="card dashboard-card"><span class="eyebrow">ANNIVERSARY</span><h3>7 July</h3><p>Our relationship started here.</p><strong id="anniversaryCountdown"></strong></article>
+        <article class="card dashboard-card"><span class="eyebrow">TADISA</span><h3>10 October</h3><p>Her birthday · Black · Quality time · Quiet spaces</p></article>
+        <article class="card dashboard-card"><span class="eyebrow">NEXT</span><h3 id="nextTask">Add a shared task</h3><p>Keep the small things moving.</p></article>
+      </div>
+      <div class="quick-grid">
+        <button class="quick card" onclick="showSection('chat')"><b>Chat</b><span>Messages · photos · video · calls</span></button>
+        <button class="quick card" onclick="showSection('music')"><b>Our Soundtrack</b><span>Song of the day · playlists · lyrics</span></button>
+        <button class="quick card" onclick="showSection('life')"><b>Date Studio</b><span>Dates · games · challenges · style</span></button>
+        <button class="quick card" onclick="showSection('memories')"><b>Memory Collection</b><span>Moments · trips · milestones</span></button>
+      </div>
+    </section>
+
+    <section id="chat" class="section">
+      <div class="section-heading"><div><span class="eyebrow">COMMUNICATION</span><h2>Chat</h2></div><span class="status">Private</span></div>
+      <div class="grid two">
+        <article class="card chat-card">
+          <div class="chat-head"><strong>Tadisa & Kudakwashe</strong><span>online</span></div>
+          <div id="messages" class="messages">
+            <div class="message-row them"><div class="message-meta">Tadisa</div><div class="bubble them">I hope we keep choosing each other.</div></div>
+            <div class="message-row me"><div class="message-meta">Kuda</div><div class="bubble me">Today, tomorrow, forever.</div></div>
+          </div>
+          <form id="messageForm" class="composer"><input id="messageInput" placeholder="Write a message..."><button class="primary" type="submit">Send</button></form>
+        </article>
+        <article class="card feature-card">
+          <span class="eyebrow">MEDIA & CALLS</span>
+          <h3>Everything you need to stay connected</h3>
+          <div class="feature-list"><span>Text messages</span><span>Photos & videos</span><span>Voice notes</span><span>Voice calls</span><span>Video calls</span><span>Saved words</span></div>
+          <p class="small">Production version: WebRTC for calls and private object storage for media.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="music" class="section">
+      <div class="section-heading"><div><span class="eyebrow">OUR SOUNDTRACK</span><h2>Music</h2></div><span class="status">Shared</span></div>
+      <div class="grid two">
+        <article class="card form-card">
+          <h3>Song of the day</h3>
+          <label>Song title<input id="songTitle" placeholder="Song we love"></label>
+          <label>Artist<input id="songArtist" placeholder="Artist"></label>
+          <label>Why today?<textarea id="songReason" placeholder="Why this song reminds me of us..."></textarea></label>
+          <button class="primary" id="saveSong">Save song</button>
+        </article>
+        <article class="card music-card">
+          <span class="eyebrow">TODAY'S SONG</span><h3 id="savedSong">No song selected</h3><p id="savedArtist">Add our song of the day.</p><div class="record">TK</div><p id="savedReason" class="small"></p>
+        </article>
+      </div>
+      <div class="card list-card">
+        <div class="section-heading compact"><h3>Playlists</h3><button class="secondary" id="addPlaylist">Add playlist</button></div>
+        <div id="playlists" class="chips"><span class="chip">Our Songs</span><span class="chip">Date Night</span><span class="chip">Road Trips</span><span class="chip">Wedding</span><span class="chip">Farmhouse</span></div>
+        <p class="small">Lyrics should be linked through licensed music providers in production rather than copied into the database without rights.</p>
+      </div>
+    </section>
+
+    
+<section id="life" class="section">
+  <div class="section-heading"><div><span class="eyebrow">OUR LIFE</span><h2>Our shared life</h2></div><span class="status">Tadisa + Kuda</span></div>
+  <div class="life-cover card">
+    <img id="couplePhoto" src="kudisa-couple.jpg" alt="Kudisa couple memory">
+    <div class="life-cover-copy">
+      <span class="eyebrow">TK · 224 · BME</span>
+      <h3>Today. Tomorrow. Forever.</h3>
+      <p id="couplePhotoCaption">Our Life is the combined space where both profiles become one shared story.</p>
+      <div class="action-row">
+        <label class="secondary file-btn">Change photo<input id="photoInput" type="file" accept="image/*" hidden></label>
+        <button type="button" class="secondary" id="removePhoto">Remove photo</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid two">
+    <article class="card form-card">
+      <span class="eyebrow">YOUR SIDE</span>
+      <h3 id="personalPanelTitle">Kuda's contributions</h3>
+      <label>Thing I want to add<input id="personalThingInput" placeholder="A goal, idea, memory or activity"></label>
+      <label>Note<textarea id="personalNoteInput" placeholder="Add context..."></textarea></label>
+      <button type="button" class="primary" id="addPersonalThing">Add to my side</button>
+      <div id="personalThings" class="stack-list"></div>
+    </article>
+    <article class="card form-card">
+      <span class="eyebrow">HER SIDE</span>
+      <h3>Tadisa's contributions</h3>
+      <label>Thing to add<input id="partnerThingInput" placeholder="Add from Tadisa's profile"></label>
+      <label>Note<textarea id="partnerNoteInput" placeholder="Add context..."></textarea></label>
+      <button type="button" class="secondary" id="addPartnerThing">Add to Tadisa's side</button>
+      <div id="partnerThings" class="stack-list"></div>
+    </article>
+  </div>
+
+  <article class="card shared-feed-card">
+    <div class="section-heading compact"><div><span class="eyebrow">COMBINED VIEW</span><h3>Our events & activities</h3></div><span class="status">Shared</span></div>
+    <div id="sharedFeed" class="shared-feed"></div>
+    <form id="sharedActivityForm" class="inline-form">
+      <input id="sharedActivityInput" placeholder="Add a shared event or activity">
+      <input id="sharedActivityDate" type="date">
+      <button class="secondary" type="submit">Add activity</button>
+    </form>
+  </article>
+
+  <div class="feature-grid">
+    <article class="card feature-card"><span class="eyebrow">DATE STUDIO</span><h3>Plan intentional dates</h3><p>Energy · budget · crowd level · setting · intention · activity · backup plan.</p><button class="secondary" type="button" onclick="showSection('date')">Plan a date</button></article>
+    <article class="card feature-card"><span class="eyebrow">100 DATES</span><h3><span id="dateCount">0</span> / 100</h3><p>Build a collection of experiences, not just a list of places.</p><button class="secondary" id="completeDate" type="button">Complete a date</button></article>
+    <article class="card feature-card"><span class="eyebrow">STYLE STUDIO</span><h3>Coordinate, don't clone</h3><p>Black, white, navy, beige, brown and other combinations for dates, church, trips and photoshoots.</p><button class="secondary" id="styleGenerator" type="button">Match our outfits</button><div id="styleResult" class="result"></div></article>
+  </div>
+  <div class="grid two">
+    <article class="card form-card"><h3>Milestones</h3><div id="milestones" class="milestones"></div></article>
+    <article class="card form-card"><h3>Bucket list</h3><div id="bucket" class="milestones"></div><div class="inline-form"><input id="bucketInput" placeholder="Add a dream"><button class="secondary" id="addBucket" type="button">Add</button></div></article>
+  </div>
+  <div class="grid two">
+    <article class="card form-card"><h3>Our wedding</h3><p><strong>Vision:</strong> small, intimate and meaningful.</p><div class="metric"><span>Guest limit</span><strong>100</strong></div><div class="metric"><span>Guest list</span><strong id="guestCount">0 / 100</strong></div><button class="secondary" id="addGuest" type="button">Add guest</button></article>
+    <article class="card form-card"><h3>Our farmhouse</h3><p>A shared future vision.</p><div class="feature-list"><span>Land</span><span>Home</span><span>Garden</span><span>Family space</span><span>Farm</span><span>Dream garage</span></div><p class="small">Connect the farmhouse to a financial goal and memory board.</p></article>
+  </div>
+</section>
+
+
+    
+<section id="date" class="section">
+  <div class="section-heading"><div><span class="eyebrow">DATE STUDIO</span><h2>Plan a date</h2></div><span class="status">Shared plan</span></div>
+  <div class="date-planner card">
+    <div class="planner-grid">
+      <label>Energy
+        <select id="planEnergy"><option>Low</option><option selected>Medium</option><option>High</option></select>
+      </label>
+      <label>Intent
+        <select id="planIntent"><option>Connection</option><option>Adventure</option><option>Relaxation</option><option>Celebration</option></select>
+      </label>
+      <label>Budget
+        <input id="planBudget" type="number" min="0" step="10" value="50">
+      </label>
+      <label>Setting
+        <select id="planSetting"><option>Stay in</option><option selected>Go out</option><option>Either</option></select>
+      </label>
+      <label>Crowd level
+        <select id="planCrowd"><option selected>Quiet</option><option>Moderate</option><option>Busy</option></select>
+      </label>
+      <label>Date
+        <input id="planDate" type="date">
+      </label>
+    </div>
+    <div class="action-row">
+      <button class="primary" type="button" id="generatePlanDate">Generate our date</button>
+      <button class="secondary" type="button" id="savePlannedDate">Save to shared calendar</button>
+    </div>
+    <div id="plannedDateResult" class="date-result"></div>
+  </div>
+  <div class="grid two">
+    <article class="card form-card"><h3>Before the date</h3><ul class="clean-list"><li>Choose a phone-free period.</li><li>Pick one conversation question.</li><li>Confirm budget and transport.</li><li>Keep a backup plan.</li></ul></article>
+    <article class="card form-card"><h3>After the date</h3><label>How did we connect?<textarea id="dateReflection" placeholder="Write the memory together..."></textarea></label><button type="button" class="secondary" id="saveDateReflection">Save reflection</button></article>
+  </div>
+</section>
+
+<section id="money" class="section">
+      <div class="section-heading"><div><span class="eyebrow">LIFE WE WANT</span><h2>Build the future</h2></div><span class="status">Configurable</span></div>
+      <article class="card finance">
+        <div class="finance-intro"><h3>Shared monthly income</h3><input type="number" id="income" value="1000" min="0" step="50"><p>Change this number as your combined monthly income changes.</p></div>
+        <div class="finance-grid">
+          <div><span>Investment capital target</span><strong id="target">$120,000</strong><small>Income × 120</small></div>
+          <div><span>Minimum monthly investment</span><strong id="invest">$100</strong><small>Income × 0.10</small></div>
+          <div><span>Emergency fund target</span><strong id="emergency">$4,000</strong><small>Income × 4</small></div>
+          <div><span>Monthly expenses</span><strong id="expenses">$550</strong><small>Income × 0.55</small></div>
+        </div>
+        <div class="money-note"><strong>Formula settings</strong><span>120× investment target · 10% minimum investment · 4× emergency fund · 55% expenses</span></div>
+      </article>
+      <div class="goal-grid">
+        <article class="card goal"><span class="eyebrow">DREAM CAR</span><h3>Tadisa's Range Rover</h3><p>Future purchase goal</p><div class="progress"><i style="width:0%"></i></div><small>Set a target price and savings progress when ready.</small></article>
+        <article class="card goal"><span class="eyebrow">FUTURE HOME</span><h3>Farmhouse</h3><p>Land + home + life</p><div class="progress"><i style="width:0%"></i></div><small>Attach a financial target to the shared vision.</small></article>
+        <article class="card goal"><span class="eyebrow">WEDDING</span><h3>Small wedding</h3><p>Maximum 100 people</p><div class="progress"><i style="width:0%"></i></div><small>Track venue, rings, food, photos, music and honeymoon.</small></article>
+      </div>
+    </section>
+
+    <section id="memories" class="section">
+      <div class="section-heading"><div><span class="eyebrow">OUR STORY</span><h2>Memory Collection</h2></div><button class="secondary" id="addMemory">Add memory</button></div>
+      <div class="timeline">
+        <article class="memory card"><div class="memory-photo">BME</div><div><span class="eyebrow">BEGINNING</span><h3>High school best friends</h3><p>The story before the relationship.</p></div></article>
+        <article class="memory card"><div class="memory-photo">7 JUL</div><div><span class="eyebrow">MILESTONE</span><h3>We started dating</h3><p>7 July · Our anniversary.</p></div></article>
+        <article class="memory card"><div class="memory-photo">224</div><div><span class="eyebrow">FOREVER</span><h3>Today · Tomorrow · Forever</h3><p>Our relationship code.</p></div></article>
+      </div>
+      <div id="memoryList" class="timeline"></div>
+    </section>
+
+
+    <section id="calendar" class="section">
+      <div class="section-heading">
+        <div><span class="eyebrow">IMPORTANT DATES</span><h2>Our Calendar</h2></div>
+        <span class="status" id="notificationStatus">Notifications off</span>
+      </div>
+      <div class="grid two">
+        <article class="card calendar-card">
+          <div class="calendar-toolbar"><button class="secondary" id="prevMonth">Previous</button><h3 id="calendarTitle">Month</h3><button class="secondary" id="nextMonth">Next</button></div>
+          <div class="calendar-week"><b>Sun</b><b>Mon</b><b>Tue</b><b>Wed</b><b>Thu</b><b>Fri</b><b>Sat</b></div>
+          <div id="calendarGrid" class="calendar-grid"></div>
+          <p class="small">Birthdays and your 7 July anniversary are automatically marked every year.</p>
+        </article>
+        <article class="card form-card">
+          <span class="eyebrow">UPCOMING</span><h3>Important reminders</h3>
+          <div id="upcomingEvents" class="reminder-list"></div>
+          <hr>
+          <h3>Notification settings</h3>
+          <p class="small">Enable browser notifications for reminders. On GitHub Pages, notification permission requires HTTPS.</p>
+          <button class="primary" id="enableNotifications">Enable notifications</button>
+          <label>Reminder timing<select id="reminderTiming"><option value="30,7,1,0">30 days · 7 days · 1 day · day of</option><option value="7,1,0">7 days · 1 day · day of</option><option value="1,0">1 day · day of</option><option value="0">Day of only</option></select></label>
+          <label class="switch-row"><input type="checkbox" id="calendarAlerts" checked><span>Show in-app reminder alerts</span></label>
+          <div id="alertBox" class="result" aria-live="polite"></div>
+        </article>
+      </div>
+      <article class="card form-card">
+        <div class="section-heading compact"><div><span class="eyebrow">ADD YOUR OWN</span><h3>Custom important date</h3></div></div>
+        <form id="eventForm" class="inline-form"><input id="eventTitle" placeholder="e.g. First trip together" required><input id="eventDate" type="date" required><select id="eventType"><option value="important">Important</option><option value="birthday">Birthday</option><option value="anniversary">Anniversary</option><option value="date">Date</option></select><button class="primary">Add date</button></form>
+        <div id="customEvents" class="reminder-list"></div>
+      </article>
+    </section>
+
+    <section id="school" class="section">
+      <div class="section-heading">
+        <div><span class="eyebrow">TADISA · UNIVERSITY</span><h2>School Timetable</h2></div>
+        <span class="status">Wednesday–Friday</span>
+      </div>
+      <article class="card timetable-card">
+        <div class="timetable-head">
+          <div>
+            <h3>Women's University · Social Work</h3>
+            <p>Second year · Edit any subject, time or room as the timetable develops.</p>
+          </div>
+          <button class="secondary" id="addClass">Add class</button>
+        </div>
+        <div class="week-grid" id="weekGrid">
+          <div class="day"><b>Monday</b><span>No classes scheduled</span></div>
+          <div class="day"><b>Tuesday</b><span>No classes scheduled</span></div>
+          <div class="day scheduled"><b>Wednesday</b><span>University</span><small>Classes · timetable details</small></div>
+          <div class="day scheduled"><b>Thursday</b><span>University</span><small>Classes · timetable details</small></div>
+          <div class="day scheduled"><b>Friday</b><span>University</span><small>Classes · timetable details</small></div>
+          <div class="day"><b>Saturday</b><span>Personal / study</span></div>
+          <div class="day scheduled"><b>Sunday</b><span>Church · Choir</span><small>Relationship / family planning</small></div>
+        </div>
+      </article>
+      <div class="grid two">
+        <article class="card form-card">
+          <span class="eyebrow">STUDY PLANNER</span>
+          <h3>University commitments</h3>
+          <label>Course / subject<input id="subjectInput" placeholder="e.g. Social Work"></label>
+          <label>Day<select id="subjectDay"><option>Wednesday</option><option>Thursday</option><option>Friday</option></select></label>
+          <label>Time<input id="subjectTime" placeholder="e.g. 09:00–11:00"></label>
+          <label>Room / location<input id="subjectRoom" placeholder="Room"></label>
+          <button class="primary" id="saveClass">Save class</button>
+        </article>
+        <article class="card form-card">
+          <span class="eyebrow">WEEKLY RHYTHM</span>
+          <h3>Protected time</h3>
+          <div class="rhythm">
+            <div><b>Wed–Fri</b><span>University</span></div>
+            <div><b>Sunday</b><span>Church & choir</span></div>
+            <div><b>Quality time</b><span>Plan around both schedules</span></div>
+            <div><b>Quiet spaces</b><span>Prefer lower-crowd dates</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="tasks" class="section">
+      <div class="section-heading"><div><span class="eyebrow">DAILY LIFE</span><h2>Tasks & chores</h2></div><span class="status" id="taskStatus">0 complete</span></div>
+      <article class="card form-card">
+        <div class="inline-form"><input id="taskInput" placeholder="Task or daily chore"><select id="taskOwner"><option>Shared</option><option>Kudakwashe</option><option>Tadisa</option></select><button class="primary" id="addTask">Add</button></div>
+        <div id="taskList" class="task-list"></div>
+      </article>
+      <article class="card form-card schedule"><h3>Known weekly rhythm</h3><div class="schedule-grid"><div><b>Wed</b><span>University</span></div><div><b>Thu</b><span>University</span></div><div><b>Fri</b><span>University</span></div><div><b>Sun</b><span>Church · Choir</span></div></div><p class="small">This is a planning default. It should remain editable in production.</p></article>
+    </section>
+
+    
+<section id="profile" class="section">
+  <div class="section-heading"><div><span class="eyebrow">COUPLE PROFILES</span><h2>Two profiles. One Kudisa.</h2></div><span class="status">Editable</span></div>
+  <div class="grid two">
+    <article class="card form-card">
+      <span class="eyebrow">TADISA · 224</span>
+      <h3>Her profile</h3>
+      <label>Name<input id="tadisaName" value="Tadisa Chachora"></label>
+      <label>Birthday<input id="tadisaBirthday" type="date" value="2005-10-10"></label>
+      <label>Favourite colour<input id="tadisaColour" value="Black"></label>
+      <label>About / preferences<textarea id="tadisaPrefs">Quiet spaces · Quality time · Family oriented · Choir · Women's University</textarea></label>
+      <button type="button" class="primary" id="saveTadisaProfile">Save Tadisa profile</button>
+    </article>
+    <article class="card form-card">
+      <span class="eyebrow">KUDA · BME</span>
+      <h3>My profile</h3>
+      <label>Name<input id="kudaName" value="Kudakwashe"></label>
+      <label>Birthday<input id="kudaBirthday" type="date" value="2003-07-17"></label>
+      <label>Favourite colour<input id="kudaColour" placeholder="Favourite colour"></label>
+      <label>About / preferences<textarea id="kudaPrefs" placeholder="Add my preferences"></textarea></label>
+      <button type="button" class="primary" id="saveKudaProfile">Save Kuda profile</button>
+    </article>
+  </div>
+  <article class="card shared-profile">
+    <span class="eyebrow">COMBINED IDENTITY</span>
+    <h3 id="combinedProfileTitle">Kuda + Tadisa</h3>
+    <p id="combinedProfileText">Two individual profiles contribute to one shared relationship space.</p>
+    <div id="combinedProfileChips" class="chips"></div>
+  </article>
+</section>
+
+  </main>
+  <footer><span class="footer-logo">TK</span> KUDISA · 224 — Today, Tomorrow, Forever · BME — My Beginning, My Middle, My End</footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
